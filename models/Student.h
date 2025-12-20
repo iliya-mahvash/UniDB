@@ -1,0 +1,10 @@
+#ifndef DATA_STRUCTURE_STUDENT_H
+#define DATA_STRUCTURE_STUDENT_H
+
+
+class Student {
+    
+};
+
+
+#endif //DATA_STRUCTURE_STUDENT_H
