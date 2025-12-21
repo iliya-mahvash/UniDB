@@ -4,7 +4,7 @@
 #include "../models/Student.h"
 #include "Collection.h"
 #include "vector"
-
+using namespace std;
 struct Node {
     Student data;
     Node* next;
@@ -12,7 +12,9 @@ struct Node {
 };
 
 class LinkedListCollection: public Collection {
+    
 public:
+    ~LinkedListCollection();
     void insertOne(const Student& student);
     void deleteOne(int id);
     Student* findByID(int id);
@@ -21,7 +23,6 @@ public:
     int count();
     double sumGPA();
     double averageGPA();
-    ~Collection();
 };
 
 

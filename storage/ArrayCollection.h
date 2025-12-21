@@ -11,6 +11,7 @@ class ArrayCollection: public Collection {
 private:
     vector<Student> students;
     public:
+    ~ArrayCollection();
     void insertOne(const Student& student);
     void deleteOne(int id);
     Student* findByID(int id);

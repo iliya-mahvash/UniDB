@@ -1,14 +1,12 @@
-#include "../models/Student.h"
-#include "vector"
 #include "LinkedListCollection.h"
-using namespace std;
 
+using namespace std;
 
 Node* head = new Node();
 int size = 0;
 double sumGpa = 0, average;
 Node* last = new Node();
-void insertOne(const Student& student) {
+void LinkedListCollection:: insertOne(const Student& student) {
     if (size == 0) {
         head->data = student;
         head->prev = nullptr;
@@ -27,7 +25,7 @@ void insertOne(const Student& student) {
     average = sumGpa / size;
 }
 
-void deleteOne(int id) {
+void LinkedListCollection::deleteOne(int id) {
     Node* iter = head;
     for (int i = 0; i < size; i++) {
         if (iter->data.id == id) {
@@ -41,7 +39,7 @@ void deleteOne(int id) {
     average = sumGpa / size;
 }
 
-Student* findByID(int id) {
+Student* LinkedListCollection::findByID(int id) {
     Node* iter = head;
     for (int i = 0; i < size; i++) {
         if (iter->data.id == id) {
@@ -51,7 +49,7 @@ Student* findByID(int id) {
     return nullptr;
 }
 
-vector<Student> findAll() {
+vector<Student> LinkedListCollection::findAll() {
     vector<Student> all;
     Node* iter = head;
     for (int i = 0; i < size; i++) {
@@ -61,7 +59,7 @@ vector<Student> findAll() {
     return all;
 }
 
-vector<Student> filter(string field, string value) {
+vector<Student> LinkedListCollection::filter(string field, string value) {
     vector<Student> filtered;
     Node* iter = head;
     if (field == "gpa") {
@@ -94,12 +92,21 @@ vector<Student> filter(string field, string value) {
 
     return filtered;
 }
-int count() {
+int LinkedListCollection::count() {
     return size;
 }
-double sumGPA() {
+double LinkedListCollection::sumGPA() {
     return sumGpa;
 }
-double averageGPA() {
+double LinkedListCollection::averageGPA() {
     return average;
+}
+
+LinkedListCollection::~LinkedListCollection() {
+    Node* cur = head;
+    for (int i = 0; i < size; i++) {
+        Node* next = cur->next;
+        delete cur;
+        cur = next;
+    }
 }

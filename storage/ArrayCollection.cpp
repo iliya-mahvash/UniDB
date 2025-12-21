@@ -1,18 +1,16 @@
-#include "vector"
 #include "ArrayCollection.h"
-using namespace std;
 
 int size = 0;
 double average, sumGpa = 0;
 vector<Student> students;
-void insertOne(const Student& student) {
+void ArrayCollection::insertOne(const Student& student) {
     students.push_back(student);
     size++;
     sumGpa += student.gpa;
     average = sumGpa / size;
 }
 
-void deleteOne(int id) {
+void ArrayCollection::deleteOne(int id) {
     for (int i = 0; i < students.size(); i++) {
         if (students[i].id == id) {
             sumGpa -= students[i].gpa;
@@ -24,7 +22,7 @@ void deleteOne(int id) {
     average = sumGpa / size;
 }
 
-Student* findByID(int id) {
+Student* ArrayCollection::findByID(int id) {
     for (int i = 0; i < students.size(); i++) {
         if (students[i].id == id) {
             return &students[i];
@@ -33,11 +31,11 @@ Student* findByID(int id) {
     return nullptr;
 }
 
-vector<Student> findAll() {
+vector<Student> ArrayCollection::findAll() {
     return students;
 }
 
-vector<Student> filter(string field, string value) {
+vector<Student> ArrayCollection::filter(string field, string value) {
     vector<Student> filtered;
     if (field == "gpa") {
         double gpa = stod(value);
@@ -65,12 +63,16 @@ vector<Student> filter(string field, string value) {
     return filtered;
 }
 
-int count() {
+int ArrayCollection::count() {
     return size;
 }
-double sumGPA() {
+double ArrayCollection::sumGPA() {
     return sumGpa;
 }
-double averageGPA() {
+double ArrayCollection::averageGPA() {
     return average;
+}
+
+ArrayCollection::~ArrayCollection() {
+    students.clear();
 }
