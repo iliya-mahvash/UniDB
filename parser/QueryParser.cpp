@@ -4,7 +4,6 @@
 #include <sstream>
 using namespace std;
 
-
 vector<string> tokenExtraction(string input) {
     stringstream ss(input);
     string token;

@@ -6,4 +6,10 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(main
         main.cpp
         parser/QueryParser.cpp
+        parser/QueryParser.h
+        storage/ArrayCollection.h
+        storage/LinkedListCollection.h
+        storage/ArrayCollection.cpp
+        storage/LinkedListCollection.cpp
+        storage/Collection.h
 )

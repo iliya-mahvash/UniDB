@@ -1,41 +1,76 @@
-#include "Collection.h"
 #include "vector"
 #include "ArrayCollection.h"
 using namespace std;
 
-class ArrayCollection {
-    int count = 0;
-    double average, sumGpa = 0;
-    vector<Student> students;
-    void insertOne(const Student& student) {
-        students.push_back(student);
-        count++;
-        sumGpa += student.gpa;
-        average = sumGpa / count;
-    }
+int size = 0;
+double average, sumGpa = 0;
+vector<Student> students;
+void insertOne(const Student& student) {
+    students.push_back(student);
+    size++;
+    sumGpa += student.gpa;
+    average = sumGpa / size;
+}
 
-    void deleteOne(int id) {
+void deleteOne(int id) {
+    for (int i = 0; i < students.size(); i++) {
+        if (students[i].id == id) {
+            sumGpa -= students[i].gpa;
+            students.erase(students.begin() + i);
+            break;
+        }
+    }
+    size--;
+    average = sumGpa / size;
+}
+
+Student* findByID(int id) {
+    for (int i = 0; i < students.size(); i++) {
+        if (students[i].id == id) {
+            return &students[i];
+        }
+    }
+    return nullptr;
+}
+
+vector<Student> findAll() {
+    return students;
+}
+
+vector<Student> filter(string field, string value) {
+    vector<Student> filtered;
+    if (field == "gpa") {
+        double gpa = stod(value);
         for (int i = 0; i < students.size(); i++) {
-            if (students[i].id == id) {
-                sumGpa -= students[i].gpa;
-                students.erase(students.begin() + i);
-                break;
+            if (students[i].gpa == gpa) {
+                filtered.push_back(students[i]);
             }
         }
-        count--;
-        average = sumGpa / count;
     }
-
-    Student* findByID(int id) {
+    else if (field == "id") {
+        int id = stoi(value);
         for (int i = 0; i < students.size(); i++) {
             if (students[i].id == id) {
-                return &students[i];
+                filtered.push_back(students[i]);
             }
         }
-        return nullptr;
     }
+    else {
+        for (int i = 0; i < students.size(); i++) {
+            if (value == students[i].name) {
+                filtered.push_back(students[i]);
+            }
+        }
+    }
+    return filtered;
+}
 
-    vector<Student> findAll() {
-        return students;
-    }
-};
+int count() {
+    return size;
+}
+double sumGPA() {
+    return sumGpa;
+}
+double averageGPA() {
+    return average;
+}

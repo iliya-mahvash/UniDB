@@ -2,7 +2,6 @@
 #ifndef DATA_STRUCTURE_QUERYPARSER_H
 #define DATA_STRUCTURE_QUERYPARSER_H
 #include <vector>
-#include <sstream>
 #include <string>
 using namespace std;
 

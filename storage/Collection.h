@@ -1,6 +1,3 @@
-//
-// Created by iliya on 12/20/25.
-//
 
 #ifndef DATA_STRUCTURE_COLLECTION_H
 #define DATA_STRUCTURE_COLLECTION_H
@@ -13,7 +10,6 @@ public:
     virtual Student* findByID(int id) = 0;
     virtual vector<Student> findAll() = 0;
     virtual ~Collection() {};
-    //virtual filter ??????
 };
 
 
