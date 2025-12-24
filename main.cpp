@@ -12,7 +12,7 @@ using namespace std;
 // ==========================================
 // Domain Models
 // ==========================================
-// struct Student {
+// struengine.executeCommand Student {
 //     int id;
 //     string name;
 //     double gpa;

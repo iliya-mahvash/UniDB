@@ -12,4 +12,10 @@ add_executable(main
         storage/ArrayCollection.cpp
         storage/LinkedListCollection.cpp
         storage/Collection.h
+        engine/ExecutionEngine.cpp
+        engine/ExecutionEngine.h
+        engine/Command.cpp
+        engine/Command.h
+        engine/TransactionStack.cpp
+        engine/TransactionStack.h
 )
